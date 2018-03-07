@@ -1,0 +1,59 @@
+{% extends 'students/base.html' %}
+{% block title %}Results{% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="">
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>Results</h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+
+            <div class="row">
+              <div class="col-sm-12">
+                  <div>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>STUDENT</th>
+                          <th>CLASS</th>
+                          <th>DATE / TERM</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for row in result %}
+                        {% if row %}
+                        <tr>
+                          <td><a href= "{{ row.get_absolute_url_student_results }}"  style="cursor: pointer; text-decoration: underline;">{{ row.student }}</a></td>
+                          <td style="color: #000;">{{  row.current_class }}, {{ row.option }}</td>
+                          <td style="color: #000;">{{ row.marksheet }}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+            </div>
+
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /page content -->
+{% endblock %}

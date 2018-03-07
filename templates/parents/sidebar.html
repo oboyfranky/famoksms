@@ -1,0 +1,55 @@
+<!-- menu profile quick info -->
+{% block greet %}
+<div class="profile clearfix">
+  <div class="profile_pic">
+    {% for row in par_profile %}
+    {% if row %}
+    <img src="{{ row.photo.url }}" alt="..." class="img-circle profile_img">
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+<!-- /menu profile quick info -->
+{% endblock %}
+
+<!-- sidebar menu -->
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+  <div class="menu_section">
+    <div>
+      {% for row in par_profile %}
+      {% if row %}
+      <h3 style="margin-top: 20px; color: #fff;">{{ row.title|upper }}.&nbsp;{{ row.surname|upper }},&nbsp;{{ row.first_name|upper }}&nbsp;{% if row.other_names %}{{ row.other_names|upper }}{% endif %}</h3>
+      {% endif %}
+      {% endfor %}
+      <h4>{{ par_id }}</h4>
+    </div><hr>
+    <ul class="nav side-menu">
+      <li><a href="{% url 'parent:dashboard' %}"><i class="fa fa-home"></i> Dashboard </a>
+      </li>
+      <li><a href="{% url 'parent:profile' %}"><i class="fa fa-user"></i>My Profile </a>
+      </li>
+      <li><a><i class="fa fa-comments-o"></i> Messages <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="{% url 'parent:messages' %}"> Inbox</a></li>
+          <li><a href="{% url 'parent:send' %}"> Sent</a></li>
+        </ul>
+      </li>
+      <li><a><i class="fa fa-newspaper-o"></i>Ward Results <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="{% url 'parent:results' %}"> Current Results</a></li>
+          <li><a href="{% url 'parent:results_all' %}"> All Results</a></li>
+        </ul>
+      </li>
+      <li><a href="{% url 'parent:ward_profile' %}"><i class="fa fa-group"></i> Ward Profile</a></li>
+      <li><a><i class="fa fa-money"></i> Ward Finance<span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="{% url 'parent:finance' %}"> Current</a></li>
+          <li><a href="{% url 'parent:finance_all' %}"> All</a></li>
+        </ul>
+      </li>
+      <li><a href="{% url 'logout' %}"><i class="fa fa-power-off"></i> Logout </a>
+      </li><hr>
+    </ul>
+  </div>
+</div>
+<!-- /sidebar menu -->

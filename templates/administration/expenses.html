@@ -1,0 +1,119 @@
+{% extends 'administration/base.html' %}
+{% block title %}Messages{% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="">
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>Expenses</h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#expense">Add Expense</button><hr>
+
+            <!-- compose modal -->
+            <div class="modal fade" id="expense">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="form-horizontal form-label-left" method="POST">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label>Year*</label>
+                        <input type="text" class="form-control" placeholder="year" required="" name = "year">
+                      </div>
+                      <div class="form-group">
+                        <label>Term*</label>
+                        <input type="text" class="form-control" placeholder="term" required="" name = "term">
+                      </div>
+                      <div class="form-group">
+                        <label>Title*</label>
+                        <input type="text" class="form-control" placeholder="title" required="" name = "title">
+                      </div>
+                      <div class="form-group">
+                        <label>Body*</label>
+                        <textarea class="form-control" rows="5" placeholder="Message" required="" name = "body"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <button class="btn btn-success" type="submit">Submit</button>
+                      </div>
+                    </form>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+            <!-- end compose modal -->
+
+            <!-- inbox -->
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Inbox</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-sm-12">
+                          <div>
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th>Year</th>
+                                  <th>Term</th>
+                                  <th>Date</th>
+                                  <th>Title</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for row in expense %}
+                                {% if row %}
+                                <tr>
+                                  <td style="color: #000;">{{ row.year }}</td>
+                                  <td style="color: #000;">{{ row.term }}</td>
+                                  <td style="color: #000;">{{ row.date }}</td>
+                                  <td><a href= "{{ row.get_absolute_url_expense }}"  style="cursor: pointer;">{{ row.name }}</td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- end of inbox -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+</div>
+
+<!-- /page content -->
+{% endblock %}

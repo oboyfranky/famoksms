@@ -1,0 +1,89 @@
+{% extends 'administration/base.html' %}
+{% block title %}Parent Details{% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="">
+    <div class="clearfix"></div>
+    <hr>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="panel panel-primary" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+          <div class="panel-heading">
+            <h3 class="panel-title">Profile Info</h3>
+          </div>
+          <div class="panel-body">
+            <a href="{% url 'administration:parents' %}"><button class="btn btn-success">Go Back</button></a>
+            <hr><br>
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <div class="thumbnail" style="height: 120px; width: 120px;">
+                  <img src="{{ parent_det.photo.url }}" alt="...">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Parent Id: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{ parent_det.parent_id }}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Name: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{ parent_det.title|upper }}.&nbsp;{{ parent_det.surname|upper }},&nbsp;{{ parent_det.first_name|upper }}&nbsp;{% if parent_det.other_names %}{{ parent_det.other_names|upper }}{% endif %}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Gender: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  parent_det.gender }}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Relation: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  parent_det.relation }}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Postal Address: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  parent_det.post_address }}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Home Address: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  parent_det.home_address }}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+</div>
+<!-- /page content -->
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends 'students/base.html' %}
+{% block title %}Messages{% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="">
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>Messages</h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#compose">Compose</button><hr>
+
+            <!-- compose modal -->
+            <div class="modal fade" id="compose">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="form-horizontal form-label-left" method="POST">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label>Sender*</label>
+                        <input type="text" class="form-control" placeholder="your name / a.k.a" required="" name = "sender_name">
+                      </div>
+                      <div class="form-group">
+                        <label>Recipient Name*</label>
+                        <input type="text" class="form-control" placeholder="recipient name / a.k.a" required="" name = "reciever_name">
+                      </div>
+                      <div class="form-group">
+                        <label>Recipient Id*</label>
+                        <input type="text" class="form-control" placeholder="Recipient Id" required="" name = "recipient_id">
+                      </div>
+                      <div class="form-group">
+                        <label>Subject*</label>
+                        <input type="text" class="form-control" placeholder="Subject / Title" name = "subject">
+                      </div>
+                      <div class="form-group">
+                        <label>Message*</label>
+                        <textarea class="form-control" rows="5" placeholder="Message" required="" name = "body"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <button class="btn btn-success" type="submit">Send</button>
+                      </div>
+                    </form>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+            <!-- end compose modal -->
+
+            <!-- inbox -->
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Inbox</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-sm-12">
+                          <div>
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th>Date</th>
+                                  <th>Sender Id</th>
+                                  <th>Sender Name</th>
+                                  <th>Subject</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for row in user_messages %}
+                                {% if row %}
+                                <tr>
+                                  <td style="color: #000;">{{ row.sent }}</td>
+                                  <td><a href= "{{ row.get_absolute_url_student_mgs }}"  style="cursor: pointer; text-decoration: underline;">{{ row.sender_id }}</a></td>
+                                  <td style="color: #000;">{{ row.sender_name }}</td>
+                                  <td style="color: #000;">{{ row.subject }}</td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- end of inbox -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+</div>
+
+<!-- /page content -->
+{% endblock %}

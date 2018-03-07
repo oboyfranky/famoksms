@@ -1,0 +1,104 @@
+{% extends 'students/base.html' %}
+{% block title %}Results{% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="">
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_content">
+            <a href="{% url 'student:results' %}"><button class="btn btn-success">Go Back | Current Results</button></a>
+            <a href="{% url 'student:results_all' %}"><button class="btn btn-warning">Go Back | All Results</button></a>
+            <hr><br>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-10">
+                  <div class="panel panel-primary" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="panel-body">
+                      <br>
+                      <div class="well" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                        <h4>{{ row.student }}</h4><hr>
+                        <h4> {{ results_det.marksheet }}</h4>
+                        <div>
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>SUBJECT</th>
+                                <th>MARK</th>
+                                <th>GRADE</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>{{ results_det.subject1 }}</td>
+                                <td>{{ results_det.mark1 }} % </td>
+                                <td>{{ results_det.grade1 }}</td>
+                              </tr>
+                              <tr>
+                                <td>{{ results_det.subject2 }}</td>
+                                <td>{{ results_det.mark2 }} % </td>
+                                <td>{{ results_det.grade2 }}</td>
+                              </tr>
+                              <tr>
+                                <td>{{ results_det.subject3 }}</td>
+                                <td>{{ results_det.mark3 }} % </td>
+                                <td>{{ results_det.grade3 }}</td>
+                              </tr>
+                              <tr>
+                                <td>{{ results_det.subject4 }}</td>
+                                <td>{{ results_det.mark4 }} % </td>
+                                <td>{{ results_det.grade4 }}</td>
+                              </tr>
+                              <tr>
+                                <td>{{ results_det.subject5 }}</td>
+                                <td>{{ results_det.mark5 }} % </td>
+                                <td>{{ results_det.grade5 }}</td>
+                              </tr>
+                              <tr>
+                                <td>{{ results_det.subject6 }}</td>
+                                <td>{{ results_det.mark6 }} % </td>
+                                <td>{{ results_det.grade6 }}</td>
+                              </tr>
+                              <tr>
+                                <td>{{ results_det.subject7 }}</td>
+                                <td>{{ results_det.mark7 }} % </td>
+                                <td>{{ results_det.grade7 }}</td>
+                              </tr>
+                              <tr>
+                                <td>{{ results_det.subject8 }}</td>
+                                <td>{{ results_det.mark8 }} % </td>
+                                <td>{{ results_det.grade8 }}</td>
+                              </tr>
+                              <tr>
+                                {% if results_det is not null %}
+                                <td>{{ results_det.subject9 }}</td>
+                                <td>{{ results_det.mark9 }} % </td>
+                                <td>{{ results_det.grade9 }}</td>
+                                {% endif %}
+                              </tr>
+                              
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+</div>
+
+<!-- /page content -->
+{% endblock %}

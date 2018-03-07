@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load staticfiles %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>.:: Administration | {% block title %}{% endblock %} ::.</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="{% static 'css/custom.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+    <style type="text/css">
+      .menu_section h3 {
+        padding-left: 5px;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 0;
+        margin-top: 45px;
+        text-shadow: 1px 1px #000; }
+
+      .menu_section h4 {
+        padding-left: 5px;
+        color: #fff;
+        letter-spacing: .5px;
+        font-weight: 200;
+        font-size: 12px;
+        margin-bottom: -12px;
+        margin-top: 5px;
+        text-shadow: 1px 1px #000; }
+
+      .profile_pic {
+        width: 100%;
+        float: left; }
+
+      .img-circle.profile_img {
+        width: 50%;
+        background: #fff;
+        margin-left: 15%;
+        z-index: 1000;
+        position: inherit;
+        margin-top: 30px;
+        margin-bottom: -30px;
+        border: 1px solid rgba(52, 73, 94, 0.44);
+        padding: 4px; }
+    </style>
+
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="clearfix">
+              
+            </div>
+
+            {% include 'administration/sidebar.html' %}
+
+            <!-- /menu footer buttons -->
+
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        {% block content %}
+        {% endblock %}
+        {% block extrajs %}
+        {% endblock %}
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+           Powered By&nbsp; <a href="#"> &copy;&nbsp; FAMOK TECHNOLOGIES - 2018</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <!-- Bootstrap -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>   
+    <!-- Custom Theme Scripts -->
+    <script src="{% static 'js/custom.min.js' %}"></script>
+  </body>
+</html>

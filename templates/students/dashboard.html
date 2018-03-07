@@ -1,0 +1,194 @@
+{% extends 'students/base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="">
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>Activity</h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Student Profile</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="panel panel-primary" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Profile Info</h3>
+                      </div>
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-xs-6 col-md-4">
+                            <a href="{% url 'student:profile' %}" class="thumbnail" style="height: 145px;" title="profile">
+                              {% for row in std_profile %}
+                              {% if row %}
+                              <img src="{{ row.photo.url }}" alt="...">
+                              {% endif %}
+                              {% endfor %}
+                            </a>
+                          </div>
+                          <div class="col-xs-6 col-md-6">
+                            {% for row in std_profile %}
+                            {% if row %}
+                            <h2>{{ row.surname|upper }},&nbsp;{{ row.first_name|upper }}&nbsp;{% if row.other_names %}{{ row.other_names|upper }}{% endif %}</h2>
+                            <p><b>Student Id</b>: {{ stud_id }}</p>
+                            <p><b>Current Class</b>: {{  row.current_class }}&nbsp;{{  row.option }}</p>
+                            {% endif %}
+                            {% endfor %}
+                            <a href="{% url 'student:profile' %}"><button class="btn btn-primary">view full profile</button></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Notice</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="panel panel-success" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">All Notices</h3>
+                      </div><br>
+                      {% for row in user_notice %}
+                      {% if row %}
+                      <div class="row">
+                        <div class="col-md-offset-1 col-md-11">
+                          <small >{{ row.submitted }}</small>
+                          <p style="color: #000;"><b>{{ row.title }}</b></p><hr>
+                          <p style="color: #000;">{{ row.content }}</p>
+                          <p>{{ row.subscribe }}</p><br>
+                        </div>
+                      </div>
+                      {% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            <hr>
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Quick Links</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="panel panel-danger" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Shortcuts</h3>
+                      </div>
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-xs-6 col-md-2">
+                            <a href="{% url 'student:profile' %}" class="thumbnail" style="height: 55px;" title="profile">
+                              <img src="{% static 'img/user.png' %}" alt="...">
+                            </a>
+                          </div>
+                          <div class="col-xs-6 col-md-2">
+                            <a href="{% url 'student:results' %}" class="thumbnail" style="height: 55px;" title="results">
+                              <img src="{% static 'img/results.jpg' %}" alt="...">
+                            </a>
+                          </div>
+                          <div class="col-xs-6 col-md-2">
+                            <a href="{% url 'student:messages' %}" class="thumbnail" style="height: 55px;" title="messages">
+                              <img src="{% static 'img/messages.jpg' %}" alt="...">
+                            </a>
+                          </div>
+                          <div class="col-xs-6 col-md-2">
+                            <a href="{% url 'student:finance' %}" class="thumbnail" style="height: 55px;" title="finance">
+                              <img src="{% static 'img/finance.jpg' %}" alt="...">
+                            </a>
+                          </div>
+                          <div class="col-xs-6 col-md-2">
+                            <a href="{% url 'logout' %}" class="thumbnail" style="height: 55px;" title="logout">
+                              <img src="{% static 'img/logout.jpg' %}" alt="...">
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+
+              <div class="col-md-6">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Messages</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="panel panel-warning" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">All Messages</h3>
+                      </div><br>
+                      {% for row in user_messages %}
+                      {% if row %}
+                      <div class="row">
+                        <div class="col-md-offset-1 col-md-4"><a href="{{ row.get_absolute_url_student_mgs }}" style="text-decoration: underline;">{{ row.sent }}</a></div>
+                        <div class="col-md-7" style="color: #000;"><p>{{ row.sender_name }}({{ row.sender_id }})</p></div>
+                      </div><hr>
+                      {% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /page content -->
+{% endblock %}

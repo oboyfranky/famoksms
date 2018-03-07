@@ -1,0 +1,123 @@
+{% extends 'students/base.html' %}
+{% block title %}Profile{% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="">
+    <div class="clearfix"></div>
+    <hr>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="panel panel-primary" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+          <div class="panel-heading">
+            <h3 class="panel-title">Profile Info</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <div class="thumbnail" style="height: 120px; width: 120px;">
+                  {% for row in std_profile %}
+                  {% if row %}
+                  <img src="{{ row.photo.url }}" alt="...">
+                  {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            {% for row in std_profile %}
+            {% if row %}
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Student Id: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{ stud_id }}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Name: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{ row.surname|upper }},&nbsp;{{ row.first_name|upper }}&nbsp;{% if row.other_names %}{{ row.other_names|upper }}{% endif %}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Date of Birth: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  row.date_of_birth }}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Gender: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  row.gender }}</h5>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Admission Year: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  row.admission_year }}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Admitted Class: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  row.admitted_class }}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Current Class: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  row.current_class }}, {{ row.option }}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Postal Address: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  row.post_address }}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Home Address: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  row.home_address }}</h5>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+</div>
+
+<!-- /page content -->
+{% endblock %}

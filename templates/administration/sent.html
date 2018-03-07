@@ -1,0 +1,94 @@
+{% extends 'administration/base.html' %}
+{% block title %}Sent{% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="">
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>Messages</h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+
+            <!-- compose modal -->
+            
+
+            <!-- end compose modal -->
+
+            <!-- inbox -->
+            {% if info %}
+            <div class="alert alert-success alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <strong>{{ info }}</strong>
+            </div>
+            {% endif %}
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Sent Messages</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-sm-12">
+                          <div>
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th>Date</th>
+                                  <th>Sender Id</th>
+                                  <th>Reciepient Id</th>
+                                  <th>Reciepient Name</th>
+                                  <th>Subject</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for row in user_sent %}
+                                {% if row %}
+                                <tr>
+                                  <td style="color: #000;">{{ row.sent }}</td>
+                                  <td><a href= "{{ row.get_absolute_url_administration_send }}"  style="cursor: pointer;">{{ row.sender_id }}</a></td>
+                                  <td style="color: #000;">{{ row.reciever_id }}</td>
+                                  <td style="color: #000;">{{ row.reciever_name }}</td>
+                                  <td style="color: #000;">{{ row.subject }}</td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- end of inbox -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+</div>
+
+<!-- /page content -->
+{% endblock %}

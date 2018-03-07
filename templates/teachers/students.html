@@ -1,0 +1,174 @@
+{% extends 'teachers/base.html' %}
+{% block title %}All Students{% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="">
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>All Students</h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content"><hr>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>JHS 1</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-sm-12">
+                          <div>
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th>Student Id</th>
+                                  <th>Name</th>
+                                  <th>Admission Year</th>
+                                  <th>Gender</th>
+                                  <th>Class</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for row in form1 %}
+                                {% if row %}
+                                <tr>
+                                  <td style="color: #000">{{ row.stud_id }}</td>
+                                  <td><a href= "{{ row.get_absolute_url_tea_stud_profile_details }}"  style="cursor: pointer; text-decoration: underline;">{{ row.surname|upper }},&nbsp;{{ row.first_name|upper }}&nbsp;{% if row.other_names %}{{ row.other_names|upper }}{% endif %}</a></td>
+                                  <td style="color: #000">{{ row.admission_year }}</td>
+                                  <td style="color: #000">{{ row.gender }}</td>
+                                  <td style="color: #000">{{ row.current_class }}, {{ row.option }}</td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><hr>
+
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>JHS 2</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-sm-12">
+                          <div>
+                             <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th>Student Id</th>
+                                  <th>Name</th>
+                                  <th>Admission Year</th>
+                                  <th>Gender</th>
+                                  <th>Class</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for row in form2 %}
+                                {% if row %}
+                                <tr>
+                                  <td style="color: #000">{{ row.stud_id }}</td>
+                                  <td><a href= "{{ row.get_absolute_url_tea_stud_profile_details }}"  style="cursor: pointer; text-decoration: underline;">{{ row.surname|upper }},&nbsp;{{ row.first_name|upper }}&nbsp;{% if row.other_names %}{{ row.other_names|upper }}{% endif %}</a></td>
+                                  <td style="color: #000">{{ row.admission_year }}</td>
+                                  <td style="color: #000">{{ row.gender }}</td>
+                                  <td style="color: #000">{{ row.current_class }}, {{ row.option }}</td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><hr>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>JHS 3</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-sm-12">
+                          <div>
+                             <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th>Student Id</th>
+                                  <th>Name</th>
+                                  <th>Admission Year</th>
+                                  <th>Gender</th>
+                                  <th>Class</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for row in form3 %}
+                                {% if row %}
+                                <tr>
+                                  <td style="color: #000">{{ row.stud_id }}</td>
+                                  <td><a href= "{{ row.get_absolute_url_tea_stud_profile_details }}"  style="cursor: pointer; text-decoration: underline;">{{ row.surname|upper }},&nbsp;{{ row.first_name|upper }}&nbsp;{% if row.other_names %}{{ row.other_names|upper }}{% endif %}</a></td>
+                                  <td style="color: #000">{{ row.admission_year }}</td>
+                                  <td style="color: #000">{{ row.gender }}</td>
+                                  <td style="color: #000">{{ row.current_class }}, {{ row.option }}</td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+</div>
+
+<!-- /page content -->
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'administration/base.html' %}
+{% block title %}Profile Details{% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="">
+    <div class="clearfix"></div>
+    <hr>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="panel panel-primary" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+          <div class="panel-heading">
+            <h3 class="panel-title">Profile Info</h3>
+          </div>
+          <div class="panel-body">
+            <a href="{% url 'administration:stud_profile' %}"><button class="btn btn-success">Go Back</button></a>
+            <hr><br>
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <div class="thumbnail" style="height: 120px; width: 120px;">
+                  <img src="{{ students_det.photo.url }}" alt="...">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Student Id: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{ students_det.stud_id }}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Name: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{ students_det.surname|upper }},&nbsp;{{ students_det.first_name|upper }}&nbsp;{% if students_det.other_names %}{{ students_det.other_names|upper }}{% endif %}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Date of Birth: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  students_det.date_of_birth }}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Gender: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  students_det.gender }}</h5>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Admission Year: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  students_det.admission_year }}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Admitted Class: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  students_det.admitted_class }}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Current Class: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  students_det.current_class }}, {{ students_det.option }}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Postal Address: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  students_det.post_address }}</h5>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-4">
+                <h5><b>Home Address: </b></h5>
+              </div>
+              <div class="col-xs-6 col-md-8">
+                <h5>{{  students_det.home_address }}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+</div>
+<!-- /page content -->
+{% endblock %}

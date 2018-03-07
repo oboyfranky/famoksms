@@ -1,0 +1,51 @@
+{% extends 'teachers/base.html' %}
+{% block title %}Sent{% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="">
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_content">
+
+            <a href="{% url 'teacher:send' %}"><button class="btn btn-success">Go Back</button></a>
+            <hr><br>
+
+            <div class="container">
+              <div class="row">
+                <div class="col-md-10">
+                  <div class="panel panel-primary" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="panel-body">
+                      <div class="container">
+                        <strong>{{ sent_det.reciever_name }}</strong>
+                        <span>({{ sent_det.reciever_id }})</span> from
+                        <strong>me</strong>&nbsp;
+                        <a class="sender-dropdown"><i class="fa fa-chevron-up"></i></a>
+                        <p>{{ sent_det.sent }}</p>
+                      </div>
+                      <br>
+                      <div class="well" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                        <h4> {{ sent_det.subject }}</h4><hr>
+                        <p>{{ sent_det.message }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+</div>
+
+<!-- /page content -->
+{% endblock %}

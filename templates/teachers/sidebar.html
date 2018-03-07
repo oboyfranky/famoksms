@@ -1,0 +1,43 @@
+<!-- menu profile quick info -->
+<div class="profile clearfix">
+  <div class="profile_pic">
+    {% for row in tea_profile %}
+    {% if row %}
+    <img src="{{ row.photo.url }}" alt="..." class="img-circle profile_img">
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+<!-- /menu profile quick info -->
+
+<!-- sidebar menu -->
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+  <div class="menu_section">
+  <div>
+	{% for row in tea_profile %}
+    {% if row %}
+    <h3>{{ row.title|upper }}.&nbsp;{{ row.surname|upper }},&nbsp;{{ row.first_name|upper }}&nbsp;{% if row.other_names %}{{ row.other_names|upper }}{% endif %}</h3>
+    {% endif %}
+    {% endfor %}
+	  <h4>{{ teach_id }}</h4>
+    </div><hr>
+    <ul class="nav side-menu">
+      
+      <li><a href="{% url 'teacher:dashboard' %}"><i class="fa fa-home"></i> Dashboard </a>
+      </li>
+      <li><a href="{% url 'teacher:profile' %}"><i class="fa fa-user"></i>My Profile </a>
+      </li>
+      <li><a href="{% url 'teacher:students' %}"><i class="fa fa-users"></i>Students </a>
+      </li>
+      <li><a><i class="fa fa-comments-o"></i> Messages <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="{% url 'teacher:messages' %}"> Inbox</a></li>
+          <li><a href="{% url 'teacher:send' %}"> Sent</a></li>
+        </ul>
+      </li>
+      <li><a href="{% url 'logout' %}"><i class="fa fa-power-off"></i> Logout </a>
+      </li><hr>
+    </ul>
+  </div>
+</div>
+<!-- /sidebar menu -->

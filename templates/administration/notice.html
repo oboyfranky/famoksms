@@ -1,0 +1,118 @@
+{% extends 'administration/base.html' %}
+{% block title %}Notice{% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="">
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>Notices</h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#notice">Add Notice</button><hr>
+
+            <!-- compose modal -->
+            <div class="modal fade" id="notice">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="form-horizontal form-label-left" method="POST">
+                      {% csrf_token %}
+                      <div class="form-group">
+          						  <label for="sel1">Target Audience:</label>
+          						  <select class="form-control" id="sel1" name="audience">
+          						    <option name = "students">Students</option>
+          						    <option name = "parents">Parents</option>
+          						    <option name = "teachers">Teachers</option>
+          						    <option name = "staff">Staff</option>
+          						  </select>
+          						</div>
+                      <div class="form-group">
+                        <label>Title*</label>
+                        <input type="text" class="form-control" placeholder="your name / a.k.a" required="" name = "title">
+                      </div>
+                      <div class="form-group">
+                        <label>Body*</label>
+                        <textarea class="form-control" rows="5" placeholder="Message" required="" name = "body"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <button class="btn btn-success" type="submit">Post</button>
+                      </div>
+                    </form>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+            <!-- end compose modal -->
+
+            <!-- inbox -->
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Inbox</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-sm-12">
+                          <div>
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th>Date</th>
+                                  <th>Audience</th>
+                                  <th>Title</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for row in notice %}
+                                {% if row %}
+                                <tr>
+                                  <td style="color: #000;">{{ row.submitted }}</td>
+                                  <td><a href= "{{ row.get_absolute_url_administration_not }}"  style="cursor: pointer; text-decoration: underline;">{{ row.audience }}</a></td>
+                                  <td style="color: #000;">{{ row.title }}</td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- end of inbox -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+</div>
+
+<!-- /page content -->
+{% endblock %}
